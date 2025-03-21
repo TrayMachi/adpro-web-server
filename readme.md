@@ -13,3 +13,7 @@ In this milestone, i'm awware that i have nothing to response in my browser. So 
 ![Commit 3 Screen Capture](/assets/ValidatingRequest.png)
 
 In this milestone, i'm aware that if the client sends a request to the server, the server will always send a response back to the client. This is not a good practice because the server should only respond to valid requests. In this milestone, i have implemented a check to see if the request is a valid request. If the request is a valid request, the server will send a response back to the client. If the request is not a valid request, the server will send a 404 not found response back to the client in a HTML. The server is now able to selectively respond to requests from the client.
+
+## (4) Simulation of slow request.
+
+We aware that even though our server is running, but it's running on single thread. So that if we send multiple request to the server, the server will only be able to handle one request at a time. This is not a good practice because the server should be able to handle multiple requests at the same time. In this milestone, i have implemented a sleep function to simulate a slow request. The sleep function will make the server sleep for 10 seconds before sending a response back to the client. This will make the server slow and will not be able to handle multiple requests at the same time. The server is now able to simulate a slow request.
