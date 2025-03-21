@@ -21,3 +21,14 @@ We aware that even though our server is running, but it's running on single thre
 ## (5) Multithreaded server using Threadpool
 
 In this milestone, i have implemented a thread pool to make the server multithreaded. The thread pool will create a number of threads and will keep them alive. When a request is received, the thread pool will assign a thread to handle the request. The thread will call the handle_connection function to read the request from the client and send the response back to the client. The thread pool will keep the threads alive and will reuse them to handle multiple requests. The server is now able to handle multiple requests at the same time. We put 4 worker threads in the thread pool. This means that the server can handle 4 requests at the same time. If the server receives more than 4 requests, the requests will be queued and will be handled when a thread is available.
+
+## (Bonus) Function improvement & Graceful shutdown
+
+In this bonus milestone, i refactor the code of new function into build that contains:
+1. Validates that the pool size is greater than zero
+2. Creates a channel for communicating jobs to worker threads
+3. Wraps the receiver in an Arc (for sharing) and Mutex (for safe access)
+4. Creates the specified number of workers, giving each access to the shared receiver
+5. Returns a properly configured ThreadPool wrapped in a Result
+
+I also add a graceful shutdown feature to the server. The server will listen for a shutdown signal from the user. When the user sends a shutdown signal, the server will stop listening for incoming connections and will stop the worker threads. The server will then exit gracefully. The server is now able to exit gracefully when the user sends a shutdown signal.
